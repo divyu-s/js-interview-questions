@@ -1,7 +1,7 @@
 // Creating a promise
 
 let completed = true;
-let promise = new Promise((resolve, reject) => {
+let promiseOne = new Promise((resolve, reject) => {
   setTimeout(() => {
     if (completed) {
       resolve("i have completed javascript");
@@ -13,7 +13,7 @@ let promise = new Promise((resolve, reject) => {
 
 // Consuming a promise
 // catch, finally
-promise
+promiseOne
   .then((res) => {
     console.log(res);
   })
@@ -22,4 +22,25 @@ promise
   })
   .finally(() => {
     console.log("promise executed");
+  });
+
+// Promise Chaining
+
+const promiseTwo = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(10);
+  }, 2000);
+});
+
+promiseTwo
+  .then((res) => {
+    console.log(res);
+    return res * 10;
+  })
+  .then((res) => {
+    console.log(res);
+    return res * 10;
+  })
+  .then((res) => {
+    console.log(res);
   });
